@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Thank You</title>
+  <link rel="icon" type="image/png" href="support.jpg">
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <style>
+    .thank-you-container {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 20px;
+      background: var(--section-bg);
+      color: var(--text-color, #333);
+      font-family: var(--font-primary, 'Poppins', sans-serif);
+    }
+
+    .thank-you-icon {
+      font-size: 4rem;
+      margin-bottom: 16px;
+      animation: float 2s ease-in-out infinite;
+    }
+
+    .thank-you h1 {
+      font-size: 2.5rem;
+      color: #007BFF;
+      margin: 10px 0;
+    }
+
+    .thank-you p {
+      font-size: 1.2rem;
+      max-width: 500px;
+      margin: 20px auto;
+      opacity: 0.9;
+    }
+
+    .back-btn {
+      margin-top: 30px;
+      padding: 12px 28px;
+      background-color: #007BFF;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 1.1rem;
+      transition: background 0.3s ease;
+    }
+
+    .back-btn:hover {
+      background-color: #0056b3;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
+
+    /* Dark Mode Support */
+    body.dark-mode .thank-you-container {
+      background: #1a1a1a;
+      color: #f0f0f0;
+    }
+
+    body.dark-mode .back-btn {
+      background-color: #00aaff;
+    }
+
+    body.dark-mode .back-btn:hover {
+      background-color: #007acc;
+    }
+  </style>
+</head>
+<body class="thank-you-page">
+
+  <div class="thank-you-container">
+    <!-- Animated Icon -->
+    <div class="thank-you-icon">✅</div>
+
+    <!-- Multilingual Messages -->
+    <h1 data-en="Thank You!" data-pt="Obrigado!">Thank You!</h1>
+    <p data-en="Your message has been sent successfully. I’ll get back to you soon!" 
+       data-pt="Sua mensagem foi enviada com sucesso. Responderei em breve!">
+      Your message has been sent successfully. I’ll get back to you soon!
+    </p>
+
+    <!-- Back to Portfolio -->
+    <a href="index.html" class="back-btn" data-en="← Back to Portfolio" data-pt="← Voltar ao Portfólio">
+      ← Back to Portfolio
+    </a>
+  </div>
+
+  <!-- Reuse your language/theme logic -->
+  <script src="js/script.js"></script>
+
+  <script>
+    // Apply language from localStorage
+    document.addEventListener('DOMContentLoaded', () => {
+      const isEnglish = localStorage.getItem('lang') !== 'pt';
+      updateLanguage(isEnglish);
+    });
+  </script>
+
+</body>
+</html>
