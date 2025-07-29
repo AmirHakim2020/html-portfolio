@@ -2,194 +2,492 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Amir - Web Developer Portfolio</title>
-  <meta name="description" content="Portfolio of Amir Hakim, full-stack web developer based in Curitiba." />
-  <link rel="icon" href="./images/favicon.ico" />
-  <style>
-    /* Base Styles */
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0 auto;
-      padding: 0 1rem;
-      max-width: 900px;
-      background: #f9f9f9;
-      color: #333;
-      line-height: 1.6;
-    }
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Portfolio</title>
+  <link rel="icon" type="image/png" href="programming-1.jpg">
 
-    header {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      padding: 2rem 1rem;
-    }
 
-    h1 {
-      margin-bottom: 1rem;
-      font-size: 2.2rem;
-      color: #1f2937;
-    }
+  <!-- Fonts & Icons -->
+  <link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css " />
+  <link rel="preconnect" href="https://fonts.googleapis.com " />
+  <link rel="preconnect" href="https://fonts.gstatic.com " crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@400..900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Luckiest+Guy&family=Oswald:wght@200..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet" />
 
-    img {
-      max-width: 100%;
-      height: auto;
-    }
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    h2, h3 {
-      color: #222;
-      margin-top: 2rem;
-    }
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="style.css" />
 
-    p {
-      margin-bottom: 1rem;
-      text-align: justify;
-    }
-
-    /* Portfolio Links */
-    ul {
-      list-style: none;
-      padding: 0;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      justify-content: center;
-    }
-
-    li {
-      flex: 1 1 150px;
-      max-width: 200px;
-    }
-
-    li img {
-      width: 100%;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease;
-    }
-
-    li img:hover {
-      transform: scale(1.05);
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    /* Photo Grid Section */
-    .photo-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      justify-content: center;
-      margin-top: 1rem;
-    }
-
-    .photo-card {
-      flex: 1 1 150px;
-      max-width: 200px;
-      height: 250px;
-      overflow: hidden;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
-    }
-
-    .photo-card:hover {
-      transform: scale(1.05);
-    }
-
-    .photo-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    footer {
-      margin-top: 3rem;
-      padding: 1rem 0;
-      border-top: 1px solid #ddd;
-      text-align: center;
-      font-size: 0.9rem;
-      color: #777;
-    }
-
-    /* Responsive Typography */
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 1.7rem;
-      }
-
-      h2 {
-        font-size: 1.3rem;
-      }
-
-      .photo-card {
-        height: 180px;
-      }
-
-      li {
-        max-width: 100%;
-      }
-    }
-  </style>
+  <!-- Scripts -->
+  <script src=" https://code.jquery.com/jquery-3.6.0.min.js " integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script defer src="script.js"></script>
 </head>
-<body>
+<body class="light-mode">
+    <!-- Header & Navigation -->
   <header>
-    <h1>Amir Talaat Erian Hakim</h1>
-    <img src="Amir-Foto.jpg" alt="Portrait of Amir Talaat Erian Hakim" width="200" />
+    <nav class="navbar">
+      <div class="logo">
+        <a href="#home">
+          <span data-en="My Portfolio" data-pt="Meu Portfólio">My Portfolio</span>
+        </a>
+      </div>
+
+      <!-- Hamburger Menu Toggle & Nav Links -->
+      <div class="nav-toggle-group">
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">&#9776;</button>
+        <ul class="nav-links" id="navLinks" role="menu" aria-hidden="true">
+          <li role="menuitem"><a href="#about" data-en="About" data-pt="Sobre me">About</a></li>
+          <li role="menuitem"><a href="#skills" data-en="Skills" data-pt="Habilidades">Skills</a></li>
+          <li role="menuitem"><a href="#projects" data-en="Projects" data-pt="Projetos">Projects</a></li>
+          <li role="menuitem"><a href="#contact" data-en="Contact" data-pt="Contato">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Language & Theme Toggles -->
+      <div class="nav-buttons">
+        <button id="langToggle" class="icon-btn" aria-label="Toggle language">PT</button>
+        <button id="themeToggle" class="icon-btn" aria-label="Toggle dark mode">🌙</button>
+      </div>
+    </nav>
   </header>
-  <hr />
-  <main>
-    <section>
-      <p>Olá, meu nome é Amir Hakim. Sou egípcio, moro atualmente em Curitiba e sou casado com uma brasileira. Tenho formação em Sistemas de Informação e falo árabe fluentemente, além de ter domínio avançado de português e inglês. Hoje trabalho como recepcionista em uma escola de artes, mas estou em plena transição de carreira para a área de desenvolvimento web — uma paixão que venho cultivando nos últimos anos. Estou cursando um bootcamp completo de desenvolvimento full-stack, onde aprendi tecnologias como HTML, CSS, JavaScript, Node.js, React, entre outras. Meu objetivo é atuar como desenvolvedor web júnior e crescer profissionalmente na área de tecnologia.</p>
-    </section>
 
-    <section>
-      <h2>Meu Portfólio</h2>
-      <p>Fique à vontade para visitar os cinco sites que desenvolvi até o momento. Eles demonstram minhas habilidades práticas em desenvolvimento web e estão disponíveis para visualização no meu portfólio.</p>
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1 data-en="Hi, I'm Amir Hakim" data-pt="Olá, Eu Sou Amir Hakim">Hi, I'm Amir Hakim</h1>
+      <p data-en="Creative Web Developer & Designer" data-pt="Desenvolvedor Web Criativo e Designer">
+        Creative Web Developer & Designer
+      </p>
+      <a href="#projects" class="btn primary-btn icon-btn" data-en="🚀 View My Work" data-pt="🚀 Ver Meus Projetos">
+        <span>🚀 View My Work</span>
+      </a>
+    </div>
+  </section>
 
-      <ul>
-        <li><a href="https://amir-hakim.netlify.app" target="_blank"><img src="Amir's CV Website.jpg" alt="CV Website" /></a></li>
-        <li><a href="https://tindog-application.netlify.app" target="_blank"><img src="Tindog.jpg" alt="Tindog Website" /></a></li>
-        <li><a href="https://very-dice-game.netlify.app" target="_blank"><img src="Dice Game.jpg" alt="Dice Game" /></a></li>
-        <li><a href="https://play-some-drum.netlify.app" target="_blank"><img src="Play Drum.jpg" alt="Play Drum" /></a></li>
-        <li><a href="https://great-scrolling-effects.netlify.app" target="_blank"><img src="Great Scrolling Effects.jpg" alt="Scrolling Effects" /></a></li>
-      </ul>
-    </section>
+  <!-- About Section -->
+  <section class="about" id="about">
+    <div class="about-container">
+      <div class="about-img">
+        <a href="#cta"><img class="img-amir" src="Amir-Foto.jpg" alt="Photo of Amir Hakim, Web Developer"></a>
+      </div>
+      <div class="about-text">
+        <h2 class="about-h2" data-en="About Me" data-pt="Sobre Mim">About Me</h2>
+        <p data-en="I'm a passionate and detail-oriented web developer with over 5 years of experience creating responsive websites and user-friendly applications. I specialize in front-end technologies and strive to deliver clean, efficient, and accessible code. With a solid foundation in HTML5, CSS3, JavaScript ES6, and frameworks like Bootstrap and jQuery, I’ve successfully developed five full-featured websites — and I'm continuously working to create more. I enjoy transforming ideas into real digital experiences and am always eager to learn and grow in this dynamic field." 
+           data-pt="Sou um desenvolvedor web apaixonado e focado nos detalhes, com mais de 5 anos de experiência na criação de sites responsivos e aplicações intuitivas. Especializado em tecnologias de front-end, busco sempre escrever códigos limpos, eficientes e acessíveis. Com uma base sólida em HTML5, CSS3, JavaScript ES6 e frameworks como Bootstrap e jQuery, já desenvolvi cinco sites completos — e continuo criando cada vez mais. Gosto de transformar ideias em experiências digitais reais e estou sempre em busca de aprendizado e evolução neste campo tão dinâmico.">
+          I'm a passionate and detail-oriented web developer with over 5 years of experience creating responsive websites and user-friendly applications. I specialize in front-end technologies and strive to deliver clean, efficient, and accessible code. With a solid foundation in HTML5, CSS3, JavaScript ES6, and frameworks like Bootstrap and jQuery, I’ve successfully developed five full-featured websites — and I'm continuously working to create more. I enjoy transforming ideas into real digital experiences and am always eager to learn and grow in this dynamic field.
+        </p>
+      </div>
+    </div>
+  </section>
 
-    <section>
-      <h3>Estas quatro pessoas foram e continuam sendo fundamentais na minha trajetória, sempre me apoiando com dedicação e inspiração.</h3>
-      <div class="photo-grid">
-        <div class="photo-card">
-          <a href="Rayane.html" target="_blank"><img src="Rayane-Menezes.jpeg" alt="Rayane Menezes"></a>
+  <!-- Skills Section -->
+  <section class="skills" id="skills">
+    <h2 class="skills-h2" data-en="Skills" data-pt="Habilidades">Skills</h2>
+    <div class="skill-cards">
+      <div class="card">
+        <span>HTML5</span>
+        <div class="bar"><div class="progress" data-progress="100"></div></div>
+      </div>
+      <div class="card">
+        <span>CSS3</span>
+        <div class="bar"><div class="progress" data-progress="95"></div></div>
+      </div>
+      <div class="card">
+        <span>Bootstrap 5</span>
+        <div class="bar"><div class="progress" data-progress="98"></div></div>
+      </div>
+      <div class="card">
+        <span>JavaScript ES6</span>
+        <div class="bar"><div class="progress" data-progress="80"></div></div>
+      </div>
+      <div class="card">
+        <span>jQuery</span>
+        <div class="bar"><div class="progress" data-progress="95"></div></div>
+      </div>
+      <div class="card">
+        <span>GitHub</span>
+        <div class="bar"><div class="progress" data-progress="90"></div></div>
+      </div>
+      <div class="card">
+        <span>Netlify</span>
+        <div class="bar"><div class="progress" data-progress="90"></div></div>
+      </div>
+    </div>
+  </section>
+
+ <!-- Projects Section -->
+<section class="projects" id="projects">
+  <div class="container">
+    <h2 class="section-title" data-en="Projects" data-pt="Projetos">Projects</h2>
+    <div class="project-grid">
+      <!-- Project Card-1 -->
+      <div class="project-card">
+        <div class="project-image">
+          <a href="https://great-scrolling-effects.netlify.app" target="_blank"><img src="Great Scrolling Effects.jpg" alt="Scroll Animation Landing Page"></a>
         </div>
-        <div class="photo-card">
-          <a href="Vinna.html" target="_blank"><img src="Vinna-Sobhy.jpeg" alt="Vinna Sobhy"></a>
-        </div>
-        <div class="photo-card">
-          <a href="Talaat.html" target="_blank"><img src="Talaat-Hakim.jpeg" alt="Talaat Hakim"></a>
-        </div>
-        <div class="photo-card">
-          <a href="Fady.html" target="_blank"><img src="Fady-Talaat.jpeg" alt="Fady Talaat"></a>
+        <div class="project-content">
+          <h3>
+            <a href="https://great-scrolling-effects.netlify.app" target="_blank" rel="noopener noreferrer" data-en="Scroll Animation Landing Page" data-pt="Página de Destino com Animação de Rolagem">
+              Scroll Animation Landing Page
+            </a>
+          </h3>
+          <p data-en="Creative landing with scroll-based animations and parallax design." data-pt="Landing page criativa com animações baseadas na rolagem e design em parallax.">
+            Creative landing with scroll-based animations and parallax design.
+          </p>
         </div>
       </div>
-    </section>
+        <!-- Project Card-2 -->
+      <div class="project-card">
+        <div class="project-image">
+          <a href="https://tindog-application.netlify.app" target="_blank"><img src="Tindog.jpg" alt="Scroll Animation Landing Page"></a>
+        </div>
+        <div class="project-content">
+          <h3>
+            <a href="https://tindog-application.netlify.app" target="_blank" rel="noopener noreferrer" data-en="Scroll Animation Landing Page" data-pt="Página de Destino com Animação de Rolagem">
+              Scroll Animation Landing Page
+            </a>
+          </h3>
+          <p data-en="Creative landing with scroll-based animations and parallax design." data-pt="Landing page criativa com animações baseadas na rolagem e design em parallax.">
+            Creative landing with scroll-based animations and parallax design.
+          </p>
+        </div>
+      </div>
+          <!-- Project Card-3 -->
+      <div class="project-card">
+        <div class="project-image">
+          <a href="https://play-some-drum.netlify.app" target="_blank"><img src="Play Drum.jpg" alt="Scroll Animation Landing Page"></a>
+        </div>
+        <div class="project-content">
+          <h3>
+            <a href="https://play-some-drum.netlify.app" target="_blank" rel="noopener noreferrer" data-en="Scroll Animation Landing Page" data-pt="Página de Destino com Animação de Rolagem">
+              Scroll Animation Landing Page
+            </a>
+          </h3>
+          <p data-en="Creative landing with scroll-based animations and parallax design." data-pt="Landing page criativa com animações baseadas na rolagem e design em parallax.">
+            Creative landing with scroll-based animations and parallax design.
+          </p>
+        </div>
+      </div> 
+       <!-- Project Card-4 -->
+      <div class="project-card">
+        <div class="project-image">
+          <a href="https://very-dice-game.netlify.app" target="_blank"><img src="Dice Game.jpg" alt="Scroll Animation Landing Page"></a>
+        </div>
+        <div class="project-content">
+          <h3>
+            <a href="https://very-dice-game.netlify.app" target="_blank" rel="noopener noreferrer" data-en="Scroll Animation Landing Page" data-pt="Página de Destino com Animação de Rolagem">
+              Scroll Animation Landing Page
+            </a>
+          </h3>
+          <p data-en="Creative landing with scroll-based animations and parallax design." data-pt="Landing page criativa com animações baseadas na rolagem e design em parallax.">
+            Creative landing with scroll-based animations and parallax design.
+          </p>
+        </div>
+      </div>
+      <!-- Project Card-5 -->
+      <div class="project-card">
+        <div class="project-image">
+          <a href="https://amirhakim2020.github.io/HappyBirthdayLove/" target="_blank"><img src="HappyBirthdayLove.jpg" alt="Scroll Animation Landing Page"></a>
+        </div>
+        <div class="project-content">
+          <h3>
+            <a href="https://amirhakim2020.github.io/HappyBirthdayLove/" target="_blank" rel="noopener noreferrer" data-en="Scroll Animation Landing Page" data-pt="Página de Destino com Animação de Rolagem">
+              Scroll Animation Landing Page
+            </a>
+          </h3>
+          <p data-en="Creative landing with scroll-based animations and parallax design." data-pt="Landing page criativa com animações baseadas na rolagem e design em parallax.">
+            Creative landing with scroll-based animations and parallax design.
+          </p>
+        </div>
+      </div>
 
-    <section>
-      <h2>Contato</h2>
-      <p>Email: <a href="mailto:amirtalaathakim@gmail.com" target="_blank">amirtalaathakim@gmail.com</a></p>
-      <p>LinkedIn: <a href="https://www.linkedin.com/in/amir-hakim-235622236/" target="_blank" rel="noopener">Amir-Hakim</a></p>
-      <p>GitHub: <a href="https://github.com/AmirHakim2020" target="_blank" rel="noopener">AmirHakim2020</a></p>
-    </section>
-  </main>
+    </div>
+  </div>
+</section>
 
+<!-- Blog Section -->
+<section class="blog" id="blog">
+  <div class="blog-cards">
+    <!-- Section Title -->
+    <h2 data-en="Blog" data-pt="Blog">Blog</h2>
+    <div class="blog-grid">
+
+      <!-- Blog Post 1 -->
+      <div class="blog-card">
+        <img src="Responsive Web.jpg" class="card-img-top" alt="Responsive Design Tips">
+        <div class="card-body">
+          <h5 class="card-title"
+              data-en="Responsive Web Design Tips"
+              data-pt="Dicas de Design Web Responsivo">
+            Responsive Web Design Tips
+          </h5>
+          <p class="card-text"
+             data-en="Learn how to build websites that work perfectly on any screen size."
+             data-pt="Aprenda a criar sites que funcionam perfeitamente em qualquer tamanho de tela.">
+            Learn how to build websites that work perfectly on any screen size.
+          </p>
+          <div class="more-content">
+            <p data-en="Responsive design ensures your website looks great on all devices — desktops, tablets, and phones. Use media queries, flexible grids, and relative units like %, vw, and em instead of fixed pixels."
+               data-pt="O design responsivo garante que seu site fique ótimo em todos os dispositivos — desktops, tablets e celulares. Use media queries, grades flexíveis e unidades relativas como %, vw e em em vez de pixels fixos.">
+              Responsive design ensures your website looks great on all devices — desktops, tablets, and phones. Use media queries, flexible grids, and relative units like %, vw, and em instead of fixed pixels.
+            </p>
+            <ul>
+              <li data-en="✅ Use Flexbox and Grid layouts" data-pt="✅ Use layouts Flexbox e Grid">✅ Use Flexbox and Grid layouts</li>
+              <li data-en="✅ Avoid fixed-width elements" data-pt="✅ Evite elementos com largura fixa">✅ Avoid fixed-width elements</li>
+              <li data-en="✅ Optimize images for different screen sizes" data-pt="✅ Otimize imagens para diferentes tamanhos de tela">✅ Optimize images for different screen sizes</li>
+            </ul>
+            <p data-en="Test using DevTools on different screen sizes. Mobile-first is a good strategy!" 
+               data-pt="Teste usando DevTools em diferentes tamanhos de tela. Mobile-first é uma boa estratégia!">
+              Test using DevTools on different screen sizes. Mobile-first is a good strategy!
+            </p>
+          </div>
+          <a href="javascript:void(0)" class="btn btn-primary read-more-btn" 
+             data-en="Read More" data-pt="Leia Mais">
+            Read More
+          </a>
+        </div>
+      </div>
+
+      <!-- Blog Post 2 -->
+      <div class="blog-card">
+        <img src="JavaScript-Projects.jpg" class="card-img-top" alt="JavaScript Project Ideas">
+        <div class="card-body">
+          <h5 class="card-title"
+              data-en="5 JavaScript Projects to Boost Your Skills"
+              data-pt="5 Projetos em JavaScript para Aumentar Suas Habilidades">
+            5 JavaScript Projects to Boost Your Skills
+          </h5>
+          <p class="card-text"
+             data-en="Practical project ideas to strengthen your JavaScript knowledge."
+             data-pt="Ideias práticas de projetos para fortalecer seu conhecimento em JavaScript.">
+            Practical project ideas to strengthen your JavaScript knowledge.
+          </p>
+          <div class="more-content">
+            <p data-en="Building small but useful projects is a great way to master JavaScript. Here are some ideas to try:"
+               data-pt="Criar projetos pequenos mas úteis é uma ótima maneira de dominar JavaScript. Aqui estão algumas ideias para experimentar:">
+              Building small but useful projects is a great way to master JavaScript. Here are some ideas to try:
+            </p>
+            <ul>
+              <li data-en="🎲 Dice Game" data-pt="🎲 Jogo de Dados">🎲 Dice Game</li>
+              <li data-en="🥁 Drum Kit" data-pt="🥁 Kit de Bateria">🥁 Drum Kit</li>
+              <li data-en="⏱️ Countdown Timer" data-pt="⏱️ Temporizador Regressivo">⏱️ Countdown Timer</li>
+              <li data-en="📋 To-Do List with Local Storage" data-pt="📋 Lista de Tarefas com Armazenamento Local">📋 To-Do List with Local Storage</li>
+              <li data-en="🧮 Tip Calculator" data-pt="🧮 Calculadora de Gorjeta">🧮 Tip Calculator</li>
+            </ul>
+            <p data-en="Keep it simple but clean, and focus on DOM manipulation, event listeners, and basic logic."
+               data-pt="Mantenha-se simples, mas organizado, e foque em manipulação do DOM, listeners de eventos e lógica básica.">
+              Keep it simple but clean, and focus on DOM manipulation, event listeners, and basic logic.
+            </p>
+          </div>
+          <a href="javascript:void(0)" class="btn btn-primary read-more-btn" 
+             data-en="Read More" data-pt="Leia Mais">
+            Read More
+          </a>
+        </div>
+      </div>
+
+      <!-- Blog Post 3 -->
+      <div class="blog-card">
+        <img src="Scroll-Animations-Improve-UX.jpg" class="card-img-top" alt="Scroll Animations in Web Design">
+        <div class="card-body">
+          <h5 class="card-title"
+              data-en="How Scroll Animations Improve UX"
+              data-pt="Como Animações de Rolar Melhoram a Experiência do Usuário">
+            How Scroll Animations Improve UX
+          </h5>
+          <p class="card-text"
+             data-en="Discover how subtle animations on scroll can boost user engagement."
+             data-pt="Descubra como animações sutis ao rolar podem aumentar o engajamento do usuário.">
+            Discover how subtle animations on scroll can boost user engagement.
+          </p>
+          <div class="more-content">
+            <p data-en="Scroll animations can make a page feel more dynamic and modern. They guide the user’s attention and make navigation smoother."
+               data-pt="Animações ao rolar podem tornar uma página mais dinâmica e moderna. Elas direcionam a atenção do usuário e tornam a navegação mais suave.">
+              Scroll animations can make a page feel more dynamic and modern. They guide the user’s attention and make navigation smoother.
+            </p>
+            <ul>
+              <li data-en="✨ Use libraries like AOS, GSAP, or ScrollMagic" data-pt="✨ Use bibliotecas como AOS, GSAP ou ScrollMagic">✨ Use libraries like AOS, GSAP, or ScrollMagic</li>
+              <li data-en="🧠 Avoid overdoing animations — focus on clarity" data-pt="🧠 Evite exagerar nas animações — foque na clareza">🧠 Avoid overdoing animations — focus on clarity</li>
+              <li data-en="⚙️ Combine with Intersection Observer for better performance" data-pt="⚙️ Combine com Intersection Observer para melhor desempenho">⚙️ Combine with Intersection Observer for better performance</li>
+            </ul>
+            <p data-en="Try animating elements as they come into view to add life to your design without distracting from the content."
+               data-pt="Tente animar elementos conforme aparecem para dar vida ao seu design sem distrair do conteúdo.">
+              Try animating elements as they come into view to add life to your design without distracting from the content.
+            </p>
+          </div>
+          <a href="javascript:void(0)" class="btn btn-primary read-more-btn" 
+             data-en="Read More" data-pt="Leia Mais">
+            Read More
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Education Section -->
+<section id="education" class="education-section" aria-label="Education">
+  <div class="container">
+    <!-- Section Title -->
+    <h2 class="section-title" data-en="Education" data-pt="Educação">Education</h2>
+
+    <div class="education-item">
+      <!-- Degree Title -->
+      <h3 class="degree-title" 
+          data-en="Bachelor of Information Systems" 
+          data-pt="Bacharelado em Sistemas de Informação">
+        Bachelor of Information Systems
+      </h3>
+
+      <!-- Institution -->
+      <p class="institution">
+        <strong 
+          data-en="Future Academy Institute" 
+          data-pt="Instituto Future Academy">
+          Future Academy Institute
+        </strong> 
+        — 
+        <time datetime="2015" 
+              data-en="Graduated: 2015" 
+              data-pt="Formado: 2015">
+          Graduated: 2015
+        </time>
+      </p>
+
+      <!-- Description -->
+      <p class="description"
+         data-en="Graduated from the Department of Information Systems at Future Academy Institute in New Cairo, Egypt."
+         data-pt="Formado pelo Departamento de Sistemas de Informação do Future Academy Institute em New Cairo, Egito.">
+        Graduated from the Department of Information Systems at Future Academy Institute in New Cairo, Egypt.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Courses Section -->
+<section id="courses" class="courses-section">
+  <div class="container">
+    <!-- Section Title -->
+    <h2 class="section-title" data-en="Courses" data-pt="Cursos">Courses</h2>
+
+    <!-- Ongoing Courses -->
+    <div class="courses-block">
+      <h3 class="courses-heading" data-en="🟢 Ongoing Courses" data-pt="🟢 Cursos em Andamento">🟢 Ongoing Courses</h3>
+      <ul class="courses-list ongoing">
+        <li class="highlight" data-en="The Complete Full-Stack Web Development Bootcamp" data-pt="Bootcamp Completo de Desenvolvimento Web Full-Stack">The Complete Full-Stack Web Development Bootcamp</li>
+      </ul>
+    </div>
+
+    <!-- Upcoming Courses -->
+    <div class="courses-block">
+      <h3 class="courses-heading" data-en="📌 Courses I Plan to Take Next" data-pt="📌 Cursos que Pretendo Fazer">📌 Courses I Plan to Take Next</h3>
+      <ul class="courses-list upcoming">
+        <li data-en="100 Days of Code: The Complete Python Pro Bootcamp" data-pt="100 Dias de Código: O Bootcamp Completo de Python Pro">100 Days of Code: The Complete Python Pro Bootcamp</li>
+        <li data-en="The Complete Flutter Development Bootcamp with Dart" data-pt="Bootcamp Completo de Desenvolvimento Flutter com Dart">The Complete Flutter Development Bootcamp with Dart</li>
+        <li data-en="iOS & Swift - The Complete iOS App Development Bootcamp" data-pt="iOS & Swift - O Bootcamp Completo de Desenvolvimento de Apps iOS">iOS & Swift - The Complete iOS App Development Bootcamp</li>
+      </ul>
+    </div>
+
+    <!-- Future Interests -->
+    <div class="courses-block">
+      <h3 class="courses-heading" data-en="🎯 Future Interests" data-pt="🎯 Interesses Futuros">🎯 Future Interests</h3>
+      <ul class="courses-list future">
+        <li data-en="Complete C# Unity Game Developer 2D" data-pt="Desenvolvedor Completo de Jogos C# Unity 2D">Complete C# Unity Game Developer 2D</li>
+        <li data-en="Complete C# Unity Game Developer 3D (Updated To Unity 6)" data-pt="Desenvolvedor Completo de Jogos C# Unity 3D (Atualizado para Unity 6)">Complete C# Unity Game Developer 3D (Updated To Unity 6)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+
+    <!-- Download CV Section -->
+<section class="download-cv" id="download-cv">
+  <div class="container">
+    <h2 data-en="Download CV" data-pt="Baixar Currículo">Download CV</h2>
+    <p data-en="You can download my full CV as PDF to know more about my background and experience." data-pt="Você pode baixar meu currículo completo em PDF para saber mais sobre meu histórico e experiência.">
+      You can download my full CV as PDF to know more about my background and experience.
+    </p>
+    <a href="Amir-Hakim-Resume.pdf" download class="btn btn-download">📄 Download My CV</a>
+  </div>
+</section>
+
+
+<!-- Contact Section -->
+<section class="contact" id="contact">
+  <h2 data-en="Contact Me" data-pt="Entre em Contato">Contact Me</h2>
+  <div class="contact-container">
+    <form 
+       action="https://formsubmit.co/amirtalaathakim@gmail.com"
+       method="POST" 
+       class="contact-form"
+    >
+      <input 
+        type="text" 
+        name="Name" 
+        placeholder="Name" 
+        data-en="Name"
+        data-pt="Nome"
+        required 
+      >
+      <input 
+        type="email" 
+        name="Email" 
+        placeholder="Email" 
+        data-en="Email"
+        data-pt="E-mail"
+        required 
+      >
+      <textarea 
+        name="Message" 
+        placeholder="Message" 
+        data-en="Message"
+        data-pt="Mensagem"
+        required
+      ></textarea>
+      
+      <!-- Hidden fields -->
+      <input type="hidden" name="_subject" value="New Message from Portfolio">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_autoresponse" value="Thanks for your message! I'll reply shortly.">
+      <input type="hidden" name="_next" value="https://amirhakim2020.github.io/html-portfolio/thank-you.html">
+
+      <button type="submit" class="submit-btn" data-en="Send Message" data-pt="Enviar Mensagem">
+        Send Message
+      </button>
+
+      <!-- Success Message -->
+      <div class="success-message" style="display: none; color: #4BB543; margin-top: 10px;">
+        ✅ Message sent! I’ll get back to you soon.
+      </div>
+    </form>
+  </div>
+</section>
+
+
+
+
+  <!-- Call to Action -->
+  <section class="cta" id="cta">
+    <div class="cta-content">
+      <h2 class="cta-h2" data-en="Let’s Work Together!" data-pt="Vamos Trabalhar Juntos!">Let’s Work Together!</h2>
+      <a href="#contact" class="btn primary-btn" data-en="Contact Me" data-pt="Contate-me">Contact Me</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
   <footer>
-    <p>© 2025 Amir Hakim. All rights reserved.</p>
+    <p>&copy; 2025 Amir Hakim. All rights reserved.</p>
+  <div class="social-icons">
+    <a href="https://github.com/AmirHakim2020" target="_blank"><i class="fab fa-github"></i></a>
+    <a href="#projects"><i class="fas fa-rocket"></i></a>
+    <a href="https://www.linkedin.com/in/YOUR-LINK" target="_blank"><i class="fab fa-linkedin"></i></a>
+    <a href="http://www.instagram.com/amir_talaat_hakim?igsh=MXN4MGVuanhucTE0Zg%3D%3D&utm_source=qr" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.facebook.com/amir.jesus.5" target="_blank"><i class="fab fa-facebook"></i></a>
+    <a href="mailto:mailto:amirtalaathakim@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
+  </div>
   </footer>
 </body>
 </html>
-
